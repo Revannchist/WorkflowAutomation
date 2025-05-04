@@ -13,16 +13,11 @@ app.get('/', (req, res) => { //So we can check if the server is running and not 
   res.send('✅ Workflow Automation API is running.');
 });
 
-app.post('/calculate', (req, res) => {
-  const { price, quantity } = req.body;
+app.get('/calculate', (req, res) => {
+  const price = Number(req.query.price);
+  const quantity = Number(req.query.quantity);
 
-  // Input validation
-  if (
-    typeof price !== 'number' ||
-    typeof quantity !== 'number' ||
-    price <= 0 ||
-    quantity <= 0
-  ) {
+  if (!price || !quantity || price <= 0 || quantity <= 0) {
     return res.status(400).json({ error: 'Price and quantity must be positive numbers.' });
   }
 
