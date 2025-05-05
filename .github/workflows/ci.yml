@@ -27,10 +27,13 @@ jobs:
       - name: Run tests
         run: npx vitest run
 
+  deploy:
+    needs: test 
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
       - name: Deploy to Render
-        if: github.ref == 'refs/heads/main'
-        env: 
+        env:
           deploy_url: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
         run: |
           curl "$deploy_url"
-          
