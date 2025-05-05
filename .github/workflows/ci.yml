@@ -28,7 +28,7 @@ jobs:
         run: npx vitest run
 
       - name: Deploy to Render
-        if: ${{success() && github.ref == 'refs/heads/main'}}  
+        if: ${{ success() && github.ref == 'refs/heads/main' }}  
         env: 
           deploy_url: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
         run: |
