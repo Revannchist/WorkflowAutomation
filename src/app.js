@@ -9,7 +9,7 @@ app.use(cors()); // Enable CORS for all origins
 app.use(express.json()); // Automatically parse JSON bodies
 
 // Routes
-app.get('/', (req, res) => {
+app.get('/', (req, res) => { //So we can check if the server is running and not get the 404 error
   res.send('✅ Workflow Automation API is running.');
 });
 
@@ -17,7 +17,7 @@ app.get('/calculate', (req, res) => {
   const price = Number(req.query.price);
   const quantity = Number(req.query.quantity);
 
-  if (!price || !quantity || price > 0 || quantity > 0) {
+  if (!price || !quantity || price <= 0 || quantity <= 0) {
     return res.status(400).json({ error: 'Price and quantity must be positive numbers.' });
   }
 
