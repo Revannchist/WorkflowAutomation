@@ -9,7 +9,7 @@ app.use(cors()); // Enable CORS for all origins
 app.use(express.json()); // Automatically parse JSON bodies
 
 // Routes
-app.get('/', (req, res) => { //So we can check if the server is running and not get the 404 error
+app.get('/', (req, res) => {
   res.send('✅ Workflow Automation API is running.');
 });
 
