@@ -17,7 +17,7 @@ app.get('/calculate', (req, res) => {
   const price = Number(req.query.price);
   const quantity = Number(req.query.quantity);
 
-  if (!price || !quantity || price > 0 || quantity <= 0) {
+  if (!price || !quantity || price <= 0 || quantity <= 0) {
     return res.status(400).json({ error: 'Price and quantity must be positive numbers.' });
   }
 
