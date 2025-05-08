@@ -24,3 +24,4 @@ export default function () {
     sleep(1); // Sleep for 1 second between requests
 }
 // This script uses k6 to perform load testing on the API endpoint. It simulates 10 virtual users making requests for 30 seconds.
+// Each request checks if the response status is 200 and if the response contains a 'total' field. The script sleeps for 1 second between requests to simulate a realistic load pattern.
