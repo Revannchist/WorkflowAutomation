@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+import rateLimit from 'express-rate-limit';
 
 // Create the express app
 const app = express();
@@ -7,6 +8,15 @@ const app = express();
 // Middleware
 app.use(cors()); // Enable CORS for all origins
 app.use(express.json()); // Automatically parse JSON bodies
+
+// Rate limiting middleware 
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  limit: 10, // Number of requests allowed per windowMs
+  message: 'Too many requests, please try again later.' // Message to send when limit is reached
+});
+
+app.use(limiter); // Apply rate limiting to all requests
 
 // Routes
 app.get('/', (req, res) => { //So we can check if the server is running and not get the 404 error
