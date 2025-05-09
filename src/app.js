@@ -12,7 +12,7 @@ app.use(express.json()); // Automatically parse JSON bodies
 
 // Rate limiting middleware 
 const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
+  windowMs: 5 * 60 * 1000, // 5 minutes (changed from 15 minutes to 5 minutes for testing)
   max: 200, // Number of requests allowed per windowMs
   message: 'Too many requests, please try again later.' // Message to send when limit is reached
 });
