@@ -36,7 +36,6 @@ jobs:
 
       - name: Install k6 Homebrew
         run: |
-          brew update
           brew install k6
 
       - name: Run k6 Load Test
