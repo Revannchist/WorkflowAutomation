@@ -4,6 +4,10 @@ import { sleep, check } from 'k6';
 export const options = {
     vus: 10, // Number of virtual users
     duration: '30s', // Duration of the test
+    thresholds: {
+      http_req_duration: ['p(95)<200'], // 95% of requests should complete under 200ms
+      http_req_failed: ['rate<0.05'],   // Less than 5% of requests should fail
+    },
 };
 
 export default function () {
@@ -25,3 +29,5 @@ export default function () {
 }
 // This script uses k6 to perform load testing on the API endpoint. It simulates 10 virtual users making requests for 30 seconds.
 // Each request checks if the response status is 200 and if the response contains a 'total' field. The script sleeps for 1 second between requests to simulate a realistic load pattern.
+// The test also includes thresholds to ensure that 95% of requests complete under 200ms and that less than 5% of requests fail.
+// Integrating load tests with CI/CD #
