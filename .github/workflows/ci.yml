@@ -44,6 +44,7 @@ jobs:
           cloud-run-locally: true #Runs the test locally and uploads the results to Grafana Cloud
         env:
           K6_CLOUD_TOKEN: ${{ secrets.K6_CLOUD_TOKEN }} #The same token used when logging in to Grafana locally
+          K6_CLOUD_PROJECT_ID: ${{ secrets.K6_CLOUD_PROJECT_ID }} #The project ID of the Grafana Cloud project where the test results will be uploaded
 
   deploy:
     needs: [test, load-test]
