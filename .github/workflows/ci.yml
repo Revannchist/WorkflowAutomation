@@ -40,6 +40,8 @@ jobs:
       - name: Run k6 Load Tests
         uses: grafana/run-k6-action@v1
         with:
+          cloud: true # enables k6 Cloud upload
+          token: ${{ secrets.K6_CLOUD_TOKEN }} 
           path: |
             ./load-test.js
 
