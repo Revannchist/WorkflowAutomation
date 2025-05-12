@@ -40,10 +40,10 @@ jobs:
       - name: Run k6 Load Tests
         uses: grafana/run-k6-action@v1
         with:
-          cloud: true # enables k6 Cloud upload
-          token: ${{ secrets.K6_CLOUD_TOKEN }} 
-          path: |
-            ./load-test.js
+          path: ./load-test.js
+          cloud-run-locally: true #Runs the test locally and uploads the results to Grafana Cloud
+        env:
+          K6_CLOUD_TOKEN: ${{ secrets.K6_CLOUD_TOKEN }} #The same token used when logging in to Grafana locally
 
   deploy:
     needs: [test, load-test]
