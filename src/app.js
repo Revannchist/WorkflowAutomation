@@ -25,7 +25,7 @@ app.get('/', (req, res) => { //So we can check if the server is running and not 
   res.send('✅ Workflow Automation API is running.');
 });
 
-app.get('/calculate', (req, res) => {
+app.get('/calculate', (req, res) => { //comment
   const price = Number(req.query.price);
   const quantity = Number(req.query.quantity);
 
